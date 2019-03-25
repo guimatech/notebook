@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: %i[show edit update destroy]
 
   # GET /contacts
   # GET /contacts.json
@@ -9,16 +9,17 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   # GET /contacts/1.json
-  def show
-  end
+  def show; end
 
   # GET /contacts/new
   def new
     @contact = Contact.new
+    options_for_select
   end
 
   # GET /contacts/1/edit
   def edit
+    options_for_select
   end
 
   # POST /contacts
@@ -62,13 +63,18 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:nome, :email, :kind_id, :rmk)
-    end
+  def options_for_select
+    @kind_options_for_select = Kind.all
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require(:contact).permit(:nome, :email, :kind_id, :rmk)
+  end
 end
