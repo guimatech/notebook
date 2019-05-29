@@ -7,6 +7,8 @@ ruby '2.6.2'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 # A library for generating fake data such as names, addresses, and phone numbers.
 gem 'faker', '~> 1.6', '>= 1.6.6'
+# Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff http://rails-i18n.org
+gem 'rails-i18n', '> 5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '< 1.4'
 # Use Puma as the app server
